@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Software1ClassExercise1
 {
-    public class CatFood:Product
+    public class DryCatFood:CatFood
     {
-        public bool KittenFood { get; set; }
-
+        public double WeightPounds { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace Software1ClassExercise1
         private List<Product> _products = new List<Product>();
         private Dictionary<string, DogLeash> _dogLeashes = new Dictionary<string, DogLeash>();
         private Dictionary<string, CatFood> _catFoods = new Dictionary<string, CatFood>();
+        private Dictionary<string, DryCatFood> _dryCatFoods = new Dictionary<string, DryCatFood>();
 
         public ProductLogic() { 
             _products = new List<Product>();
@@ -24,12 +25,21 @@ namespace Software1ClassExercise1
             {
                 DogLeash leash = (DogLeash)product;
                 _dogLeashes.Add(leash.Name, leash);
+                Console.WriteLine("Dog leash added to inventory.");
+            }
+            else if (product is DryCatFood)
+            {
+                DryCatFood dryFood = (DryCatFood)product;
+                _dryCatFoods.Add(dryFood.Name, dryFood);
+                Console.WriteLine("Dry cat food added to inventory.");
             }
             else if (product is CatFood)
             {
                 CatFood food = (CatFood)product;
                 _catFoods.Add(food.Name, food);
+                Console.WriteLine("Cat food added to inventory.");
             }
+            
         }
 
         public List<Product> GetAllProducts() {
@@ -49,6 +59,32 @@ namespace Software1ClassExercise1
                 return null;
             }
             
+        }
+
+        public CatFood GetCatFoodByName(string name)
+        {
+            if (_catFoods.ContainsKey(name))
+            {
+                return _catFoods[name];
+            }
+            else
+            {
+                Console.WriteLine("The cat food name does not exist in the inventory.");
+                return null;
+            }
+        }
+        
+        public DryCatFood GetDryCatFoodByName(string name)
+        {
+            if (_dryCatFoods.ContainsKey(name))
+            {
+                return _dryCatFoods[name];
+            }
+            else
+            {
+                Console.WriteLine("The dry cat food name does not exist in the inventory.");
+                return null;
+            }
         }
     }
 }

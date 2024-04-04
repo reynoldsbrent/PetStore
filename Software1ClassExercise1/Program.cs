@@ -1,18 +1,20 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
-
 namespace Software1ClassExercise1
 {
     public class Program
     {
-        public static string userInput;
         static void Main(string[] args)
         {
+            ProductLogic productLogic = new ProductLogic();
+            string userInput;
             Console.WriteLine("Press 1 to add a product");
+            Console.WriteLine("Press 2 to find a product by name");
             Console.WriteLine("Type 'exit' to quit");
             userInput = Console.ReadLine();
 
-            while(userInput.ToLower() != "exit")
+            while(!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
             {
                 if (userInput == "1")
                 {
@@ -37,10 +39,24 @@ namespace Software1ClassExercise1
                     Console.WriteLine("Enter the amount of leashes in stock: ");
                     leash.Quantity = int.Parse(Console.ReadLine());
 
-                    Console.WriteLine(JsonSerializer.Serialize(leash));
+                    productLogic.AddProduct(leash);
+
+                    Console.WriteLine("Product added to inventory.");
+                }
+                else if(userInput == "2")
+                {
+                    Console.WriteLine("Enter the name of the leash you want to find: ");
+                    string leashName = Console.ReadLine();
+                    DogLeash leash = productLogic.GetDogLeashByName(leashName);
+                    if(leash != null)
+                    {
+                        Console.WriteLine("Leash found: ");
+                        Console.WriteLine(JsonSerializer.Serialize(leash));
+                    }
                 }
 
                 Console.WriteLine("Press 1 to add a product.");
+                Console.WriteLine("Press 2 to find a product by name.");
                 Console.WriteLine("Type 'exit' to quit.");
                 userInput = Console.ReadLine();
             }

@@ -10,6 +10,7 @@ namespace Software1ClassExercise1
             string userInput;
             Console.WriteLine("Press 1 to add a product. Dog Leash, Cat Food, or Dry Cat Food.");
             Console.WriteLine("Press 2 to find a product by name.");
+            Console.WriteLine("Press 3 to see in stock products.");
             Console.WriteLine("Type 'exit' to quit.");
             userInput = Console.ReadLine();
 
@@ -243,9 +244,24 @@ namespace Software1ClassExercise1
                         }
                     }
                 }
+                // See in stock products.
+                else if (userInput == "3")
+                {
+                    Console.WriteLine("In stock products: ");
+
+                    foreach (string product in productLogic.GetOnlyInStockProducts())
+                    {
+                        Console.WriteLine(product);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid option.");
+                }
 
                 Console.WriteLine("Press 1 to add a product. Dog Leash, Cat Food, or Dry Cat Food.");
                 Console.WriteLine("Press 2 to find a product by name.");
+                Console.WriteLine("Press 3 to see in stock products.");
                 Console.WriteLine("Type 'exit' to quit.");
                 userInput = Console.ReadLine();
             }

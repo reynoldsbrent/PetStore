@@ -11,6 +11,7 @@ namespace Software1ClassExercise1
             Console.WriteLine("Press 1 to add a product. Dog Leash, Cat Food, or Dry Cat Food.");
             Console.WriteLine("Press 2 to find a product by name.");
             Console.WriteLine("Press 3 to see in stock products.");
+            Console.WriteLine("Press 4 to see the total price of the inventory.");
             Console.WriteLine("Type 'exit' to quit.");
             userInput = Console.ReadLine();
 
@@ -254,6 +255,10 @@ namespace Software1ClassExercise1
                         Console.WriteLine(product);
                     }
                 }
+                else if (userInput == "4")
+                {
+                    Console.WriteLine("Total price of inventory: $" + productLogic.GetTotalPriceOfInventory());
+                }
                 else
                 {
                     Console.WriteLine("Invalid input. Please enter a valid option.");
@@ -262,6 +267,7 @@ namespace Software1ClassExercise1
                 Console.WriteLine("Press 1 to add a product. Dog Leash, Cat Food, or Dry Cat Food.");
                 Console.WriteLine("Press 2 to find a product by name.");
                 Console.WriteLine("Press 3 to see in stock products.");
+                Console.WriteLine("Press 4 to see the total price of the inventory.");
                 Console.WriteLine("Type 'exit' to quit.");
                 userInput = Console.ReadLine();
             }

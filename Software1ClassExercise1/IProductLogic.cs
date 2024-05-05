@@ -9,5 +9,6 @@ namespace Software1ClassExercise1
         DogLeash GetDogLeashByName(string name);
         DryCatFood GetDryCatFoodByName(string name);
         List<string> GetOnlyInStockProducts();
+        decimal GetTotalPriceOfInventory();
     }
 }

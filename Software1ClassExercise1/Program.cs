@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Text.Json;
 namespace Software1ClassExercise1
 {
     public class Program
     {
+        
         static void Main(string[] args)
         {
-            ProductLogic productLogic = new ProductLogic();
+            var services = CreateServiceCollection();
+            var productLogic = services.GetService<IProductLogic>();
             string userInput;
             Console.WriteLine("Press 1 to add a product. Dog Leash, Cat Food, or Dry Cat Food.");
             Console.WriteLine("Press 2 to find a product by name.");
@@ -272,6 +275,12 @@ namespace Software1ClassExercise1
                 userInput = Console.ReadLine();
             }
          
+        }
+        static IServiceProvider CreateServiceCollection()
+        {
+            return new ServiceCollection()
+                .AddTransient<IProductLogic, ProductLogic>()
+                .BuildServiceProvider();
         }
     }
 }
